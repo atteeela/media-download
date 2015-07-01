@@ -1,0 +1,5 @@
+interface YouTubeDL {
+    // Extract the audio from the provided YouTube link
+    getAudio(url string) string    
+}
+
