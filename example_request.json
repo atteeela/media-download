@@ -7,12 +7,6 @@
             "method": "Default.getAudio",
             "params": ["https://www.youtube.com/watch?v=mbDZyv_Dw7A"],
             "id" : 1
-        },
-        {
-            "jsonrpc": "2.0",
-            "method": "getAudio",
-            "params": ["https://www.youtube.com/watch?v=zp5jpAYeYI4"],
-            "id" : 2
         }
     ]        
 }

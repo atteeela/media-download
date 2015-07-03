@@ -5,11 +5,12 @@ Image Processing Service
 A wrapper around GM commands for now
 """
 from __future__ import (unicode_literals, print_function, division, absolute_import)
+import logging
 from future import standard_library
 standard_library.install_aliases()
 from builtins import *
 from sh import youtube_dl
-import helper as stackhut # user code imports
+import stackhut  # user code imports
 
 class YouTubeDLService:
     def getAudio(self, in_url):
