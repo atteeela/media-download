@@ -1,9 +1,7 @@
-# Python Stack
+# YouTube-DL
 
-A Python 3 stack
+A service for music-lovers that takes any YouTube/Soundcloud/etc. link and extracts the file for you to save and download to your music player of choice.
 
 ## Usage
-* Edit the `Hutfile` to describe your service parameters
-* Edit the `service.idl` to describe the service interface
-* Edit `app.py` to implement your desired service interface
-* Dev, run and push using the `stackhut` app
+* TODO
+

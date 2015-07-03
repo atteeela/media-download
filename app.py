@@ -4,38 +4,31 @@
 Image Processing Service
 A wrapper around GM commands for now
 """
-import requests
-import stackhut
-from stackhut.stackhut import *  # user code imports
+from __future__ import (unicode_literals, print_function, division, absolute_import)
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
+from sh import youtube_dl
+import helper as stackhut # user code imports
 
 class YouTubeDLService:
-    def __init__(self, task_id, bucket):
-        self.task_id = task_id
-        self.bucket = bucket
-
-    def _run_command(self, cmd_list):
+    def getAudio(self, in_url):
         # run command
-        resp = call_strings(cmd_list, '')
+        resp = youtube_dl('-v', '-f', '140', '--add-metadata', '--restrict-filename', in_url)
 
         # find the downloaded file
         # look for line like this :: [download] Destination: Machinedrum_-_Center_Your_Love_Original_Mix-zp5jpAYeYI4.m4a
         prefix = "[download] Destination: "
         out_file = None
-        for l in resp['stdout'].splitlines():
+        for l in resp.splitlines():
             if l.startswith(prefix):
                 out_file = l.split(prefix)[1]
                 break
 
-        # save back to S3
-        out_url = upload_file(out_file, self.task_id, self.bucket)
+        # save file to S3
+        out_url = stackhut.put_file(out_file)
         return out_url
 
-    def getAudio(self, in_url):
-        return self._run_command(['youtube-dl', '-v', '-f', '140',
-                                  '--add-metadata', '--restrict-filename', in_url])
 
+SERVICES = {"Default": YouTubeDLService()}
 
-if __name__ == "__main__":
-    stack = Stack()
-    stack.add_handler("YouTubeDL", YouTubeDLService(stack.task_id, stack.bucket))
-    stack.run()

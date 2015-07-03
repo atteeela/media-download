@@ -1,0 +1,21 @@
+{
+    "serviceName": "youtube-dl",    
+    "id": "1e703d7b-979c-4c5d-8924-7076fc5593ec",
+    "req": [
+        {
+            "jsonrpc": "2.0",
+            "method": "Default.getAudio",
+            "params": ["https://www.youtube.com/watch?v=mbDZyv_Dw7A"],
+            "id" : 1
+        },
+        {
+            "jsonrpc": "2.0",
+            "method": "getAudio",
+            "params": ["https://www.youtube.com/watch?v=zp5jpAYeYI4"],
+            "id" : 2
+        }
+    ]        
+}
+
+
+
