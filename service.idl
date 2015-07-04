@@ -1,5 +1,8 @@
 interface Default {
-    // Extract the audio from the provided YouTube link
+    // Extract the video from the provided link
     getAudio(url string) string    
+
+    // Extract the audio from the provided link
+    getVideo(url string) string    
 }
 

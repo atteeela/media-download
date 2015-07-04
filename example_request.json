@@ -7,13 +7,25 @@
             "method": "Default.getAudio",
             "params": ["https://www.youtube.com/watch?v=mbDZyv_Dw7A"],
             "id" : 1
-        },
+        }
         {
             "jsonrpc": "2.0",
             "method": "getAudio",
             "params": ["https://www.youtube.com/watch?v=zp5jpAYeYI4"],
             "id" : 2
-        }
+        },
+        {
+            "jsonrpc": "2.0",
+            "method": "getAudio",
+            "params": ["https://soundcloud.com/moovmnt/common-sa-ra-creative-partners"],
+            "id" : 3
+        },
+        {
+            "jsonrpc": "2.0",
+            "method": "Default.getVideo",
+            "params": ["https://www.youtube.com/watch?v=U2WlQZf9zSg"],
+            "id" : 4
+        }        
     ]        
 }
 

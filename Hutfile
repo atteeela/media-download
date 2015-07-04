@@ -1,5 +1,5 @@
 # Name for the service - we recommend using CamelCase
-name: youtube-dl
+name: media-download
 
 # A unique name to identify the author
 author: StackHut
@@ -8,11 +8,15 @@ author: StackHut
 contact: huts@stackhut.com
 
 # description of the service
-description: YouTube downloading service
+description: Media downloading service
 
 # stack we use, in terms of the OS and language runtime
 baseos: alpine
 stack: python
+
+# any OS packages we need to install
+os_deps:
+    - ffmpeg
 
 # a list of files we wish to copy into the image
 files: 

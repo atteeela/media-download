@@ -1,35 +1,36 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Image Processing Service
-A wrapper around GM commands for now
+Media Download Service
+A wrapper around youtube-dl commands for now
 """
-from __future__ import (unicode_literals, print_function, division, absolute_import)
-import logging
-from future import standard_library
-standard_library.install_aliases()
-from builtins import *
 from sh import youtube_dl
 import stackhut  # user code imports
 
-class YouTubeDLService:
-    def getAudio(self, in_url):
-        # run command
-        resp = youtube_dl('-v', '-f', '140', '--add-metadata', '--restrict-filename', in_url)
-
+class MediaDownload:
+    def get_filename(self, stdout, prefix):
         # find the downloaded file
-        # look for line like this :: [download] Destination: Machinedrum_-_Center_Your_Love_Original_Mix-zp5jpAYeYI4.m4a
-        prefix = "[download] Destination: "
         out_file = None
-        for l in resp.splitlines():
+        for l in stdout.splitlines():
             if l.startswith(prefix):
                 out_file = l.split(prefix)[1]
                 break
+        print("Output filename is {}".format(out_file))
+        return out_file
+    
+    
+    def getVideo(self, in_url):
+        stdout = youtube_dl('-v', '--add-metadata', '--restrict-filename', in_url)
+        prefix = "[ffmpeg] Merging formats into "
+        out_file = self.get_filename(stdout, prefix)[1:-1] # strip quotes in filename
+        return stackhut.put_file(out_file)
 
-        # save file to S3
-        out_url = stackhut.put_file(out_file)
-        return out_url
+    def getAudio(self, in_url):
+        stdout = youtube_dl('-v', '-x', '--add-metadata', '--restrict-filename', in_url)
+        prefix = "[download] Destination: "
+        out_file = self.get_filename(stdout, prefix)
+        return stackhut.put_file(out_file)
 
 
-SERVICES = {"Default": YouTubeDLService()}
+SERVICES = {"Default": MediaDownload()}
 
