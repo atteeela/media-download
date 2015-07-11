@@ -1,11 +1,8 @@
 # Name for the service - we recommend using CamelCase
 name: media-download
 
-# A unique name to identify the author
-author: StackHut
-
-# A contact email address
-contact: huts@stackhut.com
+# GitHub URL to the project
+github_url: https://github.com/StackHut/media-download
 
 # description of the service
 description: Media downloading service
