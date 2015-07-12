@@ -20,13 +20,13 @@ class MediaDownload:
     
     
     def getVideo(self, in_url):
-        stdout = youtube_dl('-v', '--add-metadata', '--restrict-filename', in_url)
+        stdout = youtube_dl('-v', '-4', '--add-metadata', '--restrict-filename', in_url)
         prefix = "[ffmpeg] Merging formats into "
         out_file = self.get_filename(stdout, prefix)[1:-1] # strip quotes in filename
         return stackhut.put_file(out_file)
 
     def getAudio(self, in_url):
-        stdout = youtube_dl('-v', '-x', '--add-metadata', '--restrict-filename', in_url)
+        stdout = youtube_dl('-v', '-4', '-x', '--add-metadata', '--restrict-filename', in_url)
         prefix = "[download] Destination: "
         out_file = self.get_filename(stdout, prefix)
         return stackhut.put_file(out_file)
