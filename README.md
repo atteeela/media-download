@@ -1,6 +1,7 @@
-# YouTube-DL
+# Media downloading and processing
 
-A service for music-lovers that takes any YouTube/Soundcloud/etc. link and extracts the file for you to save and download to your player of choice.
+A service for media-lovers that takes any YouTube/Soundcloud/etc. link and extracts the file for you to save and view/listen on your player of choice.
 
 ## Usage
-* Look at the `service.idl` file to see what functions are available, friend.
+* Look at the API (defined in `api.idl`) to see what functions are available, friend.
+
