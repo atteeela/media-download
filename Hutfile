@@ -15,6 +15,3 @@ stack: python
 os_deps:
     - ffmpeg
 
-# a list of files we wish to copy into the image
-files: 
-    - example_request.json
