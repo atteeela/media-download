@@ -7,7 +7,7 @@ A wrapper around youtube-dl commands for now
 from sh import youtube_dl
 import stackhut  # user code imports
 
-class MediaDownload:
+class MediaDownload(stackhut.Service):
     def get_filename(self, stdout, prefix):
         # find the downloaded file
         out_file = None
